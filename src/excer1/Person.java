@@ -9,42 +9,51 @@ public class Person {
 
     public Person(String firstName, String lastName, int age, int pesel) throws NameUndefinedException, IncorrectAgeException {
         this.firstName = firstName;
-        if(firstName.length() < 2 || firstName == null )
-            throw new NameUndefinedException(firstName,lastName);
+        if (firstName.length() < 2 || firstName == null)
+            throw new NameUndefinedException(firstName, lastName);
         this.lastName = lastName;
-        if(lastName.length() < 2 || lastName == null )
-            throw new NameUndefinedException(firstName,lastName);
+        if (lastName.length() < 2 || lastName == null)
+            throw new NameUndefinedException(firstName, lastName);
         this.age = age;
-        if(age<1)
+        if (age < 1)
             throw new IncorrectAgeException(age);
         this.pesel = pesel;
     }
+
     public Person() {
     }
     public String getFirstName() {
         return firstName;
     }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
+
     public String getLastName() {
         return lastName;
     }
+
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
     public int getAge() {
         return age;
     }
+
     public void setAge(int age) {
         this.age = age;
     }
+
     public int getPesel() {
         return pesel;
     }
+
     public void setPesel(int pesel) {
         this.pesel = pesel;
     }
+
     @Override
     public String toString() {
         return "Person{" +
@@ -54,17 +63,16 @@ public class Person {
                 ", pesel='" + pesel + '\'' +
                 '}';
     }
-     void IncorrectAgeException() throws IncorrectAgeException {
-        if (age < 1) {
+    void IncorrectAgeException(int age) throws IncorrectAgeException {
+        if (age < 2) {
             throw new IncorrectAgeException(age);
         }
     }
-     void NameUndefinedException(String firstName, String lastName) throws NameUndefinedException {
+    void NameUndefinedException(String firstName, String lastName) throws NameUndefinedException {
         if (firstName.length() < 2 || lastName.length() < 2) {
-            throw new NameUndefinedException(firstName,lastName);
-
+            throw new NameUndefinedException(firstName, lastName);
         } else if (firstName == null || lastName == null) {
-            throw new NameUndefinedException(firstName,lastName);
+            throw new NameUndefinedException(firstName, lastName);
         }
     }
 }
