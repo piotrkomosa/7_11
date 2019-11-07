@@ -7,17 +7,20 @@ public class Person {
     private int age;
     private int pesel;
 
-    public Person(String firstName, String lastName, int age, int pesel) {
+    public Person(String firstName, String lastName, int age, int pesel) throws NameUndefinedException, IncorrectAgeException {
         this.firstName = firstName;
+        if(firstName.length() < 2 || firstName == null )
+            throw new NameUndefinedException(firstName,lastName);
         this.lastName = lastName;
+        if(lastName.length() < 2 || lastName == null )
+            throw new NameUndefinedException(firstName,lastName);
         this.age = age;
+        if(age<1)
+            throw new IncorrectAgeException(age);
         this.pesel = pesel;
     }
-
     public Person() {
-
     }
-
     public String getFirstName() {
         return firstName;
     }
@@ -51,17 +54,17 @@ public class Person {
                 ", pesel='" + pesel + '\'' +
                 '}';
     }
-     void IncorrectAgeException(int age) throws IncorrectAgeException {
+     void IncorrectAgeException() throws IncorrectAgeException {
         if (age < 1) {
-            throw new IncorrectAgeException();
+            throw new IncorrectAgeException(age);
         }
     }
      void NameUndefinedException(String firstName, String lastName) throws NameUndefinedException {
         if (firstName.length() < 2 || lastName.length() < 2) {
-            throw new NameUndefinedException();
+            throw new NameUndefinedException(firstName,lastName);
 
         } else if (firstName == null || lastName == null) {
-            throw new NameUndefinedException();
+            throw new NameUndefinedException(firstName,lastName);
         }
     }
 }
