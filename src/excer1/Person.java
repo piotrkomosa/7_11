@@ -13,6 +13,11 @@ public class Person {
         this.age = age;
         this.pesel = pesel;
     }
+
+    public Person() {
+
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -54,6 +59,7 @@ public class Person {
      void NameUndefinedException(String firstName, String lastName) throws NameUndefinedException {
         if (firstName.length() < 2 || lastName.length() < 2) {
             throw new NameUndefinedException();
+
         } else if (firstName == null || lastName == null) {
             throw new NameUndefinedException();
         }
