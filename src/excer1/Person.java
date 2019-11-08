@@ -19,8 +19,6 @@ public class Person {
     public Person() {
 
     }
-
-
     void ageCheck(int age) throws IncorrectAgeException {
         if (age < 1)
             throw new IncorrectAgeException(age);
@@ -75,8 +73,6 @@ public class Person {
                 ", pesel='" + pesel + '\'' +
                 '}';
     }
-
-
 }
 //    void IncorrectAgeException(int age) throws IncorrectAgeException {
 //        if (age < 2) {
